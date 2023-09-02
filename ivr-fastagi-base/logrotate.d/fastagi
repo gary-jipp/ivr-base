@@ -1,0 +1,14 @@
+/var/log/fastagi/fastagi.log {
+  daily
+  compress
+  rotate 10
+  missingok
+  notifempty
+  copytruncate
+  prerotate
+   echo `date` >> /var/log/fastagi/fastagi.log
+  endscript
+  postrotate
+   echo `date` >> /var/log/fastagi/fastagi.log
+  endscript
+}
