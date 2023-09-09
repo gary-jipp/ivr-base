@@ -19,10 +19,7 @@ function start() {
   cron -f &
   cronPid=$!
 
-  asterisk -f &
-  astPid=$!
-  echo "Asterisk pid:" $astPid
-  wait $astPid
+  asterisk -f
 
   echo `date` "- Container exiting"
   exit 0
