@@ -13,8 +13,7 @@ cron logrotate asterisk unixodbc odbc-postgresql libttspico-utils \
 && rm -rf /etc/alternatives/asterisk-prompt-en/ \
 && rm -rf /usr/share/asterisk/sounds/en_US \
 && rm -rf /usr/share/asterisk/sounds/en \
-&& rm -rf /usr/share/asterisk/sounds/en_US_f_Allison/ \
-&& echo "UMASK=002" >> /etc/default/asterisk
+&& rm -rf /usr/share/asterisk/sounds/en_US_f_Allison/
 
 COPY  .  .
 
