@@ -4,7 +4,7 @@
 #
 function stop() {
   echo `date` "- Stopping ..."
-  service asterisk stop
+  asterisk -x "core stop now"
   kill -15 $cronPid
 
   # Save logrotate status file
@@ -16,13 +16,14 @@ function start() {
   # Get intial status file if first startup
   cp -upv --preserve /var/log/asterisk/status /var/lib/logrotate/ 2> /dev/null
 
-  # Correct any bad permissions
-  chown -R asterisk /var/log/asterisk
-  service asterisk start
-
   cron -f &
   cronPid=$!
-  wait $cronPid
+
+  asterisk -f &
+  astPid=$!
+  echo "Asterisk pid:" $astPid
+  wait $astPid
+
   echo `date` "- Container exiting"
   exit 0
 }
